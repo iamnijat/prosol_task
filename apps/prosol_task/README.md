@@ -1,4 +1,4 @@
-# flutter_neoke_wallet
+# prosol_task
 
 A new Flutter project.
 

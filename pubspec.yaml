@@ -11,7 +11,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   cupertino_icons: ^1.0.6
+  intl_utils: ^2.8.7
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
@@ -20,3 +24,11 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
+
+flutter_intl:
+  enabled: true
+  main_locale: en
+  arb_dir: lib/l10n/arb
+  output_dir: lib/l10n
+  class_name: L10n

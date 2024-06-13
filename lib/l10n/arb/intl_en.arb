@@ -1,5 +1,24 @@
 {
     "@@locale": "en",
     "locale": "en",
-    "title": "Hello World"
+    "bottom_navigation_bar_home": "Home",
+    "bottom_navigation_bar_map": "Map",
+    "bottom_navigation_bar_help": "Help",
+    "bottom_navigation_bar_stats": "Stats",
+    "bottom_navigation_bar_tasks": "Tasks",
+    "home_appbar_title": "Hello, {user}",
+    "@home_appbar_title": {
+    "placeholders": {
+      "user": {
+        "type": "String",
+        "example": "Dior"
+      }
+    }
+  },
+  "home_appbar_desc": "Nice to see you again!",
+  "contracts_section_title":"Contracts",
+  "work_acts_title":"Work acts",
+  "lands_title":"Lands",
+  "expenses_title": "Expenses",
+  "reports_title": "Reports"
 }

@@ -60,11 +60,121 @@ class L10n {
     );
   }
 
-  /// `Hello World`
-  String get title {
+  /// `Home`
+  String get bottom_navigation_bar_home {
     return Intl.message(
-      'Hello World',
-      name: 'title',
+      'Home',
+      name: 'bottom_navigation_bar_home',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Map`
+  String get bottom_navigation_bar_map {
+    return Intl.message(
+      'Map',
+      name: 'bottom_navigation_bar_map',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Help`
+  String get bottom_navigation_bar_help {
+    return Intl.message(
+      'Help',
+      name: 'bottom_navigation_bar_help',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Stats`
+  String get bottom_navigation_bar_stats {
+    return Intl.message(
+      'Stats',
+      name: 'bottom_navigation_bar_stats',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tasks`
+  String get bottom_navigation_bar_tasks {
+    return Intl.message(
+      'Tasks',
+      name: 'bottom_navigation_bar_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hello, {user}`
+  String home_appbar_title(String user) {
+    return Intl.message(
+      'Hello, $user',
+      name: 'home_appbar_title',
+      desc: '',
+      args: [user],
+    );
+  }
+
+  /// `Nice to see you again!`
+  String get home_appbar_desc {
+    return Intl.message(
+      'Nice to see you again!',
+      name: 'home_appbar_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Contracts`
+  String get contracts_section_title {
+    return Intl.message(
+      'Contracts',
+      name: 'contracts_section_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Work acts`
+  String get work_acts_title {
+    return Intl.message(
+      'Work acts',
+      name: 'work_acts_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lands`
+  String get lands_title {
+    return Intl.message(
+      'Lands',
+      name: 'lands_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expenses`
+  String get expenses_title {
+    return Intl.message(
+      'Expenses',
+      name: 'expenses_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Reports`
+  String get reports_title {
+    return Intl.message(
+      'Reports',
+      name: 'reports_title',
       desc: '',
       args: [],
     );

@@ -20,9 +20,29 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
+  static String m0(user) => "Hello, ${user}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "bottom_navigation_bar_help":
+            MessageLookupByLibrary.simpleMessage("Help"),
+        "bottom_navigation_bar_home":
+            MessageLookupByLibrary.simpleMessage("Home"),
+        "bottom_navigation_bar_map":
+            MessageLookupByLibrary.simpleMessage("Map"),
+        "bottom_navigation_bar_stats":
+            MessageLookupByLibrary.simpleMessage("Stats"),
+        "bottom_navigation_bar_tasks":
+            MessageLookupByLibrary.simpleMessage("Tasks"),
+        "contracts_section_title":
+            MessageLookupByLibrary.simpleMessage("Contracts"),
+        "expenses_title": MessageLookupByLibrary.simpleMessage("Expenses"),
+        "home_appbar_desc":
+            MessageLookupByLibrary.simpleMessage("Nice to see you again!"),
+        "home_appbar_title": m0,
+        "lands_title": MessageLookupByLibrary.simpleMessage("Lands"),
         "locale": MessageLookupByLibrary.simpleMessage("en"),
-        "title": MessageLookupByLibrary.simpleMessage("Hello World")
+        "reports_title": MessageLookupByLibrary.simpleMessage("Reports"),
+        "work_acts_title": MessageLookupByLibrary.simpleMessage("Work acts")
       };
 }

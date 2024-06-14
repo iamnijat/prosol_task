@@ -7,31 +7,36 @@ import 'package:prosol_task/domain/models/layout_sections_model.dart';
 class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
   LayoutSectionsStateNotifier(this.ref) : super(null) {
     hiveDatabase = ref.read(hiveDatabaseProvider);
-    getSections();
+    _initializeSections();
   }
   late HiveDatabase? hiveDatabase;
   final StateNotifierProviderRef ref;
 
-  Future<void> getSections() async {
+  Future<void> _initializeSections() async {
     final sections = await hiveDatabase?.getSections();
-
     if (sections?.sections == null) {
-      hiveDatabase?.updateSections(LayoutSectionsModel(
-        sections: layoutSections,
-      ));
+      await hiveDatabase
+          ?.updateSections(LayoutSectionsModel(sections: layoutSections));
     }
+    await _fetchSections();
+  }
 
+  Future<void> _fetchSections() async {
     final sectionModel = await hiveDatabase?.getSections();
-
-    print(sectionModel?.sections);
-
-    final allSections = sectionModel?.sections;
+    final allSections = sectionModel?.sections ?? [];
 
     state = LayoutSections(
       visibleSections:
-          allSections!.where((section) => section.isVisible).toList(),
+          allSections.where((section) => section.isVisible).toList(),
       hiddenSections:
           allSections.where((section) => !section.isVisible).toList(),
+    );
+  }
+
+  void _updateState() {
+    state = LayoutSections(
+      visibleSections: List.from(state!.visibleSections),
+      hiddenSections: List.from(state!.hiddenSections),
     );
   }
 
@@ -41,10 +46,7 @@ class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
     state?.hiddenSections.add(item!);
     _updateOrder(state!.visibleSections);
     _updateOrder(state!.hiddenSections);
-    state = LayoutSections(
-      visibleSections: state!.visibleSections,
-      hiddenSections: state!.hiddenSections,
-    );
+    _updateState();
   }
 
   void updateHiddenSections(int index) {
@@ -53,10 +55,7 @@ class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
     state?.visibleSections.add(item!);
     _updateOrder(state!.visibleSections);
     _updateOrder(state!.hiddenSections);
-    state = LayoutSections(
-      visibleSections: state!.visibleSections,
-      hiddenSections: state!.hiddenSections,
-    );
+    _updateState();
   }
 
   void reOrderVisibleSections(int oldIndex, int newIndex) {
@@ -68,10 +67,7 @@ class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
     state?.visibleSections.insert(newIndex, item!);
     _updateOrder(state!.visibleSections);
 
-    state = LayoutSections(
-      visibleSections: state!.visibleSections,
-      hiddenSections: state!.hiddenSections,
-    );
+    _updateState();
   }
 
   void reOrderHiddenSections(int oldIndex, int newIndex) {
@@ -83,10 +79,7 @@ class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
     state?.hiddenSections.insert(newIndex, item!);
     _updateOrder(state!.hiddenSections);
 
-    state = LayoutSections(
-      visibleSections: state!.visibleSections,
-      hiddenSections: state!.hiddenSections,
-    );
+    _updateState();
   }
 
   void _updateOrder(List<LayoutSection> sections) {
@@ -105,6 +98,6 @@ class LayoutSectionsStateNotifier extends StateNotifier<LayoutSections?> {
       sections: combinedSections,
     ));
 
-    getSections();
+    _fetchSections();
   }
 }

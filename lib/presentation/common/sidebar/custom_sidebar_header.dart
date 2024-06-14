@@ -63,6 +63,7 @@ class CustomSidebarHeader extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 35),
               child: TextButton(
                 onPressed: () {
+                  Navigator.of(context).pop();
                   context.router.navigateNamed(Routes.layoutSettings);
                 },
                 child: Text(
